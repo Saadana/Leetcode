@@ -1,0 +1,48 @@
+#####C++ Solution #1
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int len = nums.size();
+        int left = 0;
+        int tmp = 0;
+        while(tmp < len) {
+            if(nums[tmp] == 0) {
+                tmp++;
+                continue;
+            }
+            else {
+                nums[left++] = nums[tmp++];
+            }
+        }
+        while (left < len) {
+            nums[left++] = 0;
+        }
+    }
+};
+
+#####C++ Solution #2
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        for(int left = 0, tmp = 0; tmp < nums.size(); tmp++) {
+            if(nums[tmp]) {
+                int t = nums[left];
+                nums[left] = nums[tmp];
+                nums[tmp] = t;
+                left++;
+            }
+        }
+    }
+};
+
+#####C++ Solution #3 (swap() is a built-in function in STL)
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        for(int left = 0, tmp = 0; tmp < nums.size(); tmp++) {
+            if(nums[tmp]) {
+                swap(nums[left++],nums[tmp]);
+            }
+        }
+    }
+};
