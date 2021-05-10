@@ -1,4 +1,4 @@
-#####C++ Solution
+#####C++ Solution #1
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -12,5 +12,29 @@ public:
             }
         }
         return i;
+    }
+};
+
+#####C++ Solution #2
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int len = nums.size();
+        int left = 0;
+        int right = len-1;
+        while(left <= right) {
+            if((nums[left] == val) && (nums[right] != val)) {
+                nums[left++] = nums[right--];
+            }
+            else {
+                if(nums[left] != val) {
+                    left++;
+                }
+                if(nums[right] == val) {
+                    right--;
+                }
+            }
+        }
+        return left;
     }
 };
