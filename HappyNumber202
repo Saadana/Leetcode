@@ -1,0 +1,46 @@
+#####C++ Solution #1
+class Solution {
+public:
+    bool isHappy(int n) {
+        int x = n;
+        while(1) {
+            int sum = 0;
+            while(x) {
+                sum += (x%10)*(x%10);
+                x /= 10;
+            }
+            if(sum == 1) {
+                return true;
+            }
+            /*Repeating pattern for non happy numbers :  {4, 16, 37, 58, 89, 145, 42, 20, 4, ...} */
+            if(sum == 4) {
+                return false;
+            }
+            x = sum;
+        }
+    }
+};
+
+#####C++ Solution #2
+class Solution {
+public:
+    bool isHappy(int n) {
+        int x = n;
+        int sum = 0;
+        /*Repeating pattern for non happy numbers :  {4, 16, 37, 58, 89, 145, 42, 20, 4, ...} */
+        /*Since the pattern is repeating we can check for first 10 iterations
+          for the number 1 to occur*/
+        for(int i = 0; i < 10; i++) {
+            sum = 0;
+            while(x) {
+                sum += (x%10)*(x%10);
+                x /= 10;
+            }
+            if(sum == 1) {
+                return true;
+            }
+            x = sum;
+        }
+        return false;
+    }
+};
