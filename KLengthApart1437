@@ -17,3 +17,19 @@ public:
     }
 };
 
+#####C++ Solution #2
+class Solution {
+public:
+    bool kLengthApart(vector<int>& nums, int k) {
+        int dist = k;   //if 1 is the first element
+        for(auto i : nums) {
+            if(i) {
+                if(dist < k)    return false;
+                dist = 0;
+            }
+            else 
+                dist++;
+        }
+        return true;
+    }
+};
