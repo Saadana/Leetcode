@@ -1,0 +1,43 @@
+#####C++ Solution #1
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int minimum = nums[0];
+        for(int i = 1; i < nums.size(); i++) {
+            //Construct prefix sum array
+            nums[i] = nums[i-1] + nums[i];
+            if(nums[i] < minimum)
+                minimum = nums[i];
+        }
+        if(minimum > 0) 
+            return 1;
+        else    
+            return (abs(minimum) + 1);
+    }
+};
+
+#####C++ Solution #2
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        for(int i = 1; i < nums.size(); i++) 
+            nums[i] = nums[i-1] + nums[i];
+        int min = *min_element(nums.begin(), nums.end());
+        return (min > 0) ? 1 : (abs(min) + 1);
+    }
+};
+
+#####C++ Solution #3
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int sum = 0;
+        int minSum = INT_MAX;
+        for(auto x : nums)  {
+            sum += x;
+            if(sum < minSum)
+                minSum = sum;
+        }
+        return max(1, 1-minSum);
+    }
+};
