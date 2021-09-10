@@ -1,3 +1,39 @@
+~~~~~C++ solution :-
+class Solution {
+public:
+    int fib(int n) {
+        if(n <= 1) {
+            return n;
+        }
+        int Fibonacci[n+1];
+        Fibonacci[0] = 0;
+        Fibonacci[1] = 1;
+        
+        for(int i = 2; i <= n; i++) {
+            Fibonacci[i] = Fibonacci[i-1] + Fibonacci[i-2];
+        }
+        return Fibonacci[n];
+    }
+};
+
+~~~~~JAVA solution :-
+class Solution {
+    public int fib(int n) {
+        if(n <= 1) {
+            return n;
+        }
+        int Fibonacci[] = new int[n+1];
+        Fibonacci[0] = 0;
+        Fibonacci[1] = 1;
+        
+        for(int i = 2; i <= n; i++) {
+            Fibonacci[i] = Fibonacci[i-1] + Fibonacci[i-2];
+        }
+        return Fibonacci[n];        
+    }
+}
+
+-------------------------------------------------------
 #####C++ Solution #1
 class Solution {
 public:
