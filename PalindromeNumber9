@@ -1,0 +1,48 @@
+~~~~~C++ solution #1
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x < 0) {
+            return false;
+        }
+        vector<int> vx;
+        while(x) {
+            vx.push_back(x%10);
+            x /= 10;
+        }
+        int vect_size = vx.size();
+        for(int i = 0, j = vect_size-1 ; i <= j; i++, j--) {
+            if(vx[i] != vx[j]) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+~~~~~C++ solution #2
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        string orig = to_string(x);
+        string rev  = orig;
+        reverse(rev.begin(), rev.end());
+        return (orig == rev);
+    }
+};
+
+~~~~~JAVA solution
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x < 0) {
+            return false;
+        }
+        String original = Integer.toString(x);
+        StringBuilder rev = new StringBuilder();
+        rev.append(original);
+        rev.reverse();
+        String reverse = rev.toString();
+        System.out.println("Orig : "+original+"  "+"Rev : "+reverse);
+        return (reverse.equals(original));
+    }
+}
