@@ -1,0 +1,15 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> pascal = new ArrayList<List<Integer>> ();
+        for(int line = 1; line <= numRows; line++) {
+            ArrayList<Integer> p = new ArrayList<> ();
+            int val = 1;
+            for(int i = 1; i <= line; i++) {
+                p.add(val);
+                val = val * (line - i) / i;
+            }
+            pascal.add(p);
+        }
+        return pascal;
+    }
+}
