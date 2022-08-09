@@ -1,0 +1,36 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        HashMap<Character, ArrayList<Integer>> hm = new LinkedHashMap<Character, ArrayList<Integer>> ();
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(hm.containsKey(c)) {
+                hm.get(c).set(0, hm.get(c).get(0) + 1);
+            }
+            else {
+                hm.put(c, new ArrayList<Integer> ());
+                hm.get(c).add(1);
+                hm.get(c).add(i);
+            }
+        }
+        for(Map.Entry<Character, ArrayList<Integer>> e : hm.entrySet()) {
+            if(e.getValue().get(0) == 1) {
+                return e.getValue().get(1);
+            }
+        }
+        return -1;
+    }
+}
+
+############################################################################################
+
+class Solution {
+    public int firstUniqChar(String s) {
+        int ans = s.length();
+        for(char c = 'a'; c <= 'z'; c++) {
+            int idx = s.indexOf(c);
+            if(idx != -1 && s.lastIndexOf(c) == idx)
+                ans = Math.min(ans, idx);
+        }
+        return (ans == s.length()) ? -1 : ans;
+    }
+}
